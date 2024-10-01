@@ -1,0 +1,41 @@
+From 8af4e3dd1550181f73bc57876151abba604ac158 Mon Sep 17 00:00:00 2001
+From: tavukkdoner <166294260+tavukkdoner@users.noreply.github.com>
+Date: Tue, 1 Oct 2024 18:35:29 +0300
+Subject: [PATCH] media: libstagefright: data: Enable slow-cpu and telephony
+ from media_codecs_sw and update c2.android.vp9.decoder
+
+---
+ media/libstagefright/data/media_codecs_sw.xml | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/media/libstagefright/data/media_codecs_sw.xml b/media/libstagefright/data/media_codecs_sw.xml
+index dc7d7875ae..2e09687986 100644
+--- a/media/libstagefright/data/media_codecs_sw.xml
++++ b/media/libstagefright/data/media_codecs_sw.xml
+@@ -17,9 +17,9 @@
+ <MediaCodecs>
+     <Settings>
+         <!-- disable TV and telephony domains by default. These must be opted in by OEMs -->
+-        <Domain name="telephony" enabled="false" />
++        <Domain name="telephony" enabled="true" />
+         <Domain name="tv" enabled="false" />
+-        <Variant name="slow-cpu" enabled="false" />
++        <Variant name="slow-cpu" enabled="true" />
+     </Settings>
+     <Decoders>
+         <MediaCodec name="c2.android.mp3.decoder" type="audio/mpeg">
+@@ -191,10 +191,10 @@
+                 <Limit name="bitrate" range="1-40000000" />
+             </Variant>
+             <Variant name="slow-cpu">
+-                <Limit name="size" min="2x2" max="1280x1280" />
+-                <Limit name="block-count" range="1-3600" /> <!-- max 1280x720 -->
+-                <Limit name="blocks-per-second" range="1-108000" />
+-                <Limit name="bitrate" range="1-5000000" />
++                <Limit name="size" min="2x2" max="1920x1920" />
++                <Limit name="block-count" range="1-8160" /> <!-- max 1920x1088 1920/16*1088/16 -->
++                <Limit name="blocks-per-second" range="1-489600" />
++                <Limit name="bitrate" range="1-20000000" />
+             </Variant>
+             <Feature name="adaptive-playback" />
+             <Attribute name="software-codec" />
