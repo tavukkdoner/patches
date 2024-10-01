@@ -1,0 +1,26 @@
+From b0eb56c629e901fe0c4da2062dd9ab33d5de4d69 Mon Sep 17 00:00:00 2001
+From: tavukkdoner <166294260+tavukkdoner@users.noreply.github.com>
+Date: Tue, 1 Oct 2024 08:43:56 +0300
+Subject: [PATCH] media: libstagefright: data: Enable slow-cpu and telephony
+ from media_codecs_sw
+
+---
+ media/libstagefright/data/media_codecs_sw.xml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/media/libstagefright/data/media_codecs_sw.xml b/media/libstagefright/data/media_codecs_sw.xml
+index dc7d7875ae..ba243d1993 100644
+--- a/media/libstagefright/data/media_codecs_sw.xml
++++ b/media/libstagefright/data/media_codecs_sw.xml
+@@ -17,9 +17,9 @@
+ <MediaCodecs>
+     <Settings>
+         <!-- disable TV and telephony domains by default. These must be opted in by OEMs -->
+-        <Domain name="telephony" enabled="false" />
++        <Domain name="telephony" enabled="true" />
+         <Domain name="tv" enabled="false" />
+-        <Variant name="slow-cpu" enabled="false" />
++        <Variant name="slow-cpu" enabled="true" />
+     </Settings>
+     <Decoders>
+         <MediaCodec name="c2.android.mp3.decoder" type="audio/mpeg">
